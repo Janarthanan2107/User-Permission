@@ -1,0 +1,31 @@
+.error-container {
+    background: linear-gradient(to bottom right, #1976d2, #2196f3);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-card {
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 2rem;
+}
+
+.error-card h1 {
+    font-size: 4rem;
+    margin: 0;
+    color: #ff5722;
+}
+
+.error-card h2 {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.error-card p {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
