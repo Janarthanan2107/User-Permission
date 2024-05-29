@@ -20,8 +20,8 @@ const Login = () => {
     const handleLogin = () => {
         setSubmitted(true);
         const storedUsers = JSON.parse(localStorage.getItem('users'));
-
-        if (storedUsers) {
+    
+        if (storedUsers && storedUsers.length > 0) {
             const user = storedUsers.find(user => user.name === username && user.password === password);
             if (user) {
                 localStorage.setItem('loggedInUser', JSON.stringify(user)); // Store the logged-in user
@@ -30,9 +30,24 @@ const Login = () => {
                 alert('Invalid credentials');
             }
         } else {
-            alert('No users found');
+            // No users found, check against default admin credentials
+            if (username === 'admin' && password === '12345678') {
+                const adminUser = {
+                    id: new Date().getTime(),
+                    name: 'admin',
+                    password: '12345678',
+                    roles: { view: true, read: true, update: true, delete: true },
+                    email: 'admin@example.com', // optional email field
+                    age: null, // optional age field
+                };
+                localStorage.setItem('loggedInUser', JSON.stringify(adminUser));
+                navigate('/blog');
+            } else {
+                alert('No users found and invalid credentials');
+            }
         }
     };
+    
 
     return (
         <div className="flex align-items-center justify-content-center login-container">
